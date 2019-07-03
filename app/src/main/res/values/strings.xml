@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Ringtone</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string name="cuocgoithanhcong">Set Default Ringtone Successful</string>
+    <string name="thongbaothanhcong">Set Default Notification Successful</string>
+    <string name="baothucthanhcong">Set Default Alarm Successful</string>
+    <string name="mocaidat">Open Setting</string>
+    <string name="huy">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="thongbao1">You need to allow the application to change the system settings to set the ringtone</string>
+    <string name="thongbao2">You need to allow the application to access storage</string>
+    <string name="downloadthanhcong">Download ringtone successful</string>
+    <string name="dadownload">You have downloaded this ringtone before</string>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "358496367784",
+    "firebase_url": "https://gh2531-ringtone-dev.firebaseio.com",
+    "project_id": "gh2531-ringtone-dev",
+    "storage_bucket": "gh2531-ringtone-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358496367784:android:9156be33c07c7769",
+        "android_client_info": {
+          "package_name": "com.gh2531.ringtones"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358496367784-vup6t5lpld0asm2a40fkptb3lqt89qpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEHKLZuoCHZXv92ULvs6sDWrRLjG4IXjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358496367784-vup6t5lpld0asm2a40fkptb3lqt89qpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

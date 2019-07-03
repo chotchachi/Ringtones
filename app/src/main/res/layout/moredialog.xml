@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp">
+    <RelativeLayout
+        android:background="#FFF"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:id="@+id/set_phone_ringtone"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/img_phone"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_phone"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+                <TextView
+                    android:layout_toRightOf="@+id/img_phone"
+                    android:text="Set Default Ringtone"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/set_noti_ringtone"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/img_ring"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_notification"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+                <TextView
+                    android:layout_toRightOf="@+id/img_ring"
+                    android:text="Set Default Notification"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/set_alarm_ringtone"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/img_alarm"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_alarm_clock"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+                <TextView
+                    android:layout_toRightOf="@+id/img_alarm"
+                    android:text="Set Default Alarm"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/download_ringtone"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp">
+                <ImageView
+                    android:id="@+id/img_download"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ic_music_downloads"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+                <TextView
+                    android:layout_toRightOf="@+id/img_download"
+                    android:text="Download This Ringtone"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"
+                    android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
