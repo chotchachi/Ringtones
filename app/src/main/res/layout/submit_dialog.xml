@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="12dp">
+    <RelativeLayout
+        android:background="#FFF"
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/textView"
+            android:text="Submit Your Ringtone"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edt_u_name"
+            android:hint="Your Name"
+            android:textCursorDrawable="@null"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/dark3"
+            android:textColor="@color/black"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <EditText
+            android:id="@+id/edt_u_email"
+            android:hint="Your Email"
+            android:textCursorDrawable="@null"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/dark3"
+            android:textColor="@color/black"
+            android:layout_below="@+id/edt_u_name"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tv_icr_email"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#FF0000"
+            android:visibility="gone"
+            android:layout_below="@+id/edt_u_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edt_r_name"
+            android:hint="Ringtone Name"
+            android:textCursorDrawable="@null"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/dark3"
+            android:textColor="@color/black"
+            android:layout_below="@+id/tv_icr_email"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tv_icr_ringtone"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#FF0000"
+            android:visibility="gone"
+            android:layout_below="@+id/edt_r_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/edt_r_singer"
+            android:hint="Ringtone Singer"
+            android:textCursorDrawable="@null"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/dark3"
+            android:textColor="@color/black"
+            android:layout_below="@+id/tv_icr_ringtone"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_background"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/tv_icr"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="#FF0000"
+            android:visibility="gone"
+            android:layout_below="@+id/edt_r_singer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_submit"
+            android:background="@drawable/button1"
+            android:layout_below="@+id/tv_icr"
+            android:layout_marginTop="10dp"
+            android:text="SUBMIT"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

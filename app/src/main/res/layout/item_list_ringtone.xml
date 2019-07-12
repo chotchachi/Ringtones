@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
+    android:paddingHorizontal="5dp"
+    android:paddingBottom="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:background="@drawable/item_ringtone_background"
@@ -30,6 +31,7 @@
             <TextView
                 android:id="@+id/tv_ringtonename"
                 android:text="Music"
+                android:textColor="@color/white"
                 android:textSize="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
@@ -48,70 +50,11 @@
         <ProgressBar
             android:id="@+id/progress_bar"
             android:progressBackgroundTint="@color/dark3"
-            android:progressTint="@color/black"
+            android:progressTint="@color/white"
             android:layout_below="@id/top"
             android:progress="30"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </RelativeLayout>
-    <!--<android.support.v7.widget.CardView
-        app:cardElevation="10dp"
-        app:contentPadding="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tv_ringtonename"
-                android:text="Music"
-                android:textSize="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/btn_music"/>
-
-            <ImageView
-                android:id="@+id/btn_music"
-                android:src="@drawable/play"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/btn_more"
-                android:layout_width="40dp"
-                android:layout_height="40dp" />
-
-            <ProgressBar
-                android:id="@+id/pro"
-                android:visibility="invisible"
-                android:layout_toLeftOf="@+id/btn_more"
-                android:layout_marginRight="10dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true" />
-
-            <io.netopen.hotbitmapgg.library.view.RingProgressBar
-                android:id="@+id/progress_bar"
-                android:layout_toLeftOf="@+id/btn_more"
-                android:layout_marginRight="10dp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerVertical="true"
-                app:max="100"
-                app:ringColor="@android:color/darker_gray"
-                app:ringProgressColor="#00B2EE"
-                app:ringWidth="3dp"
-                app:style="STROKE"
-                app:textIsShow="false"/>
-
-            <ImageView
-                android:id="@+id/btn_more"
-                android:background="@drawable/ic_more"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_width="35dp"
-                android:layout_height="35dp" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>-->
 </RelativeLayout>

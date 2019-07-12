@@ -28,4 +28,8 @@
     <string name="thongbao2">You need to allow the application to access storage</string>
     <string name="downloadthanhcong">Download ringtone successful</string>
     <string name="dadownload">You have downloaded this ringtone before</string>
+    <string name="no_connection">No internet connection, please open WiFi or Mobile Data</string>
+    <string name="review">Review 5 Star</string>
+    <string name="open_folder">Ringtone Download Folder</string>
+    <string name="write_request">Write Request Ringtone</string>
 </resources>

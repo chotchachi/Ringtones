@@ -3,36 +3,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/grp0" android:checkableBehavior="single" android:enabled="false">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:id="@+id/navigation_item_0"
+            android:title="" />
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+    <group android:id="@+id/grp1" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/navigation_item_1"
+            android:icon="@drawable/ic_star"
+            android:title="@string/review" />
+    </group>
+
+    <group android:id="@+id/grp2" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/navigation_item_2"
+            android:icon="@drawable/ic_writing"
+            android:title="@string/write_request" />
+    </group>
+
+    <group android:id="@+id/grp3" android:checkableBehavior="single" >
+        <item
+            android:id="@+id/navigation_item_3"
+            android:icon="@drawable/ic_folder"
+            android:title="@string/open_folder" />
+    </group>
 
 </menu>

@@ -23,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gh2531.ringtones.R;
+import com.gh2531.ringtones.function.CheckConnection;
 import com.gh2531.ringtones.function.CheckExternalPermission;
 import com.gh2531.ringtones.model.Ringtone;
 import com.karumi.dexter.Dexter;
@@ -42,7 +44,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.netopen.hotbitmapgg.library.view.RingProgressBar;
 
 public class RingtoneAdapter extends RecyclerView.Adapter<RingtoneAdapter.ViewHolder>{
     private ArrayList<Ringtone> arrayList;
@@ -51,6 +52,8 @@ public class RingtoneAdapter extends RecyclerView.Adapter<RingtoneAdapter.ViewHo
     private int playingPosition;
     private ViewHolder playingHolder;
     private OnItemClickListener listener;
+    private CheckConnection checkConnection;
+    private Dialog dialog_no_connection;
 
     public RingtoneAdapter(ArrayList<Ringtone> arrayList, Activity activity) {
         this.arrayList = arrayList;
@@ -103,37 +106,38 @@ public class RingtoneAdapter extends RecyclerView.Adapter<RingtoneAdapter.ViewHo
                         @Override
                         protected void onPostExecute(Integer integer) {
                             super.onPostExecute(integer);
-                            if (playingPosition == i) {
-                                if (player.isPlaying()) {
-                                    player.pause();
-                                } else {
-                                    player.start();
-                                }
-                            } else {
-                                playingPosition = i;
-                                if (player != null) {
-                                    if (null != playingHolder) {
-                                        updateNoPlayingView(playingHolder);
+                            try{
+                                if (playingPosition == i) {
+                                    if (player.isPlaying()) {
+                                        player.pause();
+                                    } else {
+                                        player.start();
                                     }
-                                    player.release();
-                                }
-                                playingHolder = viewHolder;
-                                if (checkStoragePermission() == true){
-                                    startMediaPlayer(arrayList.get(playingPosition).getFile_name(), arrayList.get(playingPosition).getFile_url());
                                 } else {
-                                    startMediaPlayerOnline(arrayList.get(playingPosition).getFile_url());
+                                    playingPosition = i;
+                                    if (player != null) {
+                                        if (null != playingHolder) {
+                                            updateNoPlayingView(playingHolder);
+                                        }
+                                        player.release();
+                                    }
+                                    playingHolder = viewHolder;
+                                    if (checkStoragePermission() == true){
+                                        startMediaPlayer(arrayList.get(playingPosition).getFile_name(), arrayList.get(playingPosition).getFile_url());
+                                    } else {
+                                        startMediaPlayerOnline(arrayList.get(playingPosition).getFile_url());
+                                    }
                                 }
-                            }
-                            updatePlayingView();
-                            playingHolder.progress_bar.setMax(player.getDuration());                //Set giá trị max cho progressbar
-                            playingHolder.progress_bar.setEnabled(true);                            //Set nổi màu progressbar
-                            if (player.isPlaying()) {
-                                playingHolder.progress_bar.setVisibility(View.VISIBLE);
-                                playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_pause);
-                            } else {
-                                playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_play);
-                            }
-                            viewHolder.loading_progress.setVisibility(View.INVISIBLE);
+                                updatePlayingView();
+                                playingHolder.progress_bar.setEnabled(true);                            //Set nổi màu progressbar
+                                if (player.isPlaying()) {
+                                    playingHolder.progress_bar.setVisibility(View.VISIBLE);
+                                    playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_pause);
+                                } else {
+                                    playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_play);
+                                }
+                                viewHolder.loading_progress.setVisibility(View.INVISIBLE);
+                            } catch (Exception e){}
                         }
                     }.execute();
             }
@@ -178,23 +182,27 @@ public class RingtoneAdapter extends RecyclerView.Adapter<RingtoneAdapter.ViewHo
 
 
     private void updatePlayingView() {
-        playingHolder.progress_bar.setMax(player.getDuration());                //Set giá trị max cho progressbar
-        final Handler handler = new Handler();
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (player != null){
-                    playingHolder.progress_bar.setProgress(player.getCurrentPosition());    //Set giá trị hiện tại cho progressbar
+        try{
+            playingHolder.progress_bar.setMax(player.getDuration());                //Set giá trị max cho progressbar
+            final Handler handler = new Handler();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if (player != null){
+                        playingHolder.progress_bar.setProgress(player.getCurrentPosition());    //Set giá trị hiện tại cho progressbar
+                    }
+                    handler.postDelayed(this, 100);
                 }
-                handler.postDelayed(this, 100);
+            });
+            playingHolder.progress_bar.setEnabled(true);                            //Set nổi màu progressbar
+            if (player.isPlaying()) {
+                playingHolder.progress_bar.setVisibility(View.VISIBLE);
+                playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_pause);
+            } else {
+                playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_play);
             }
-        });
-        playingHolder.progress_bar.setEnabled(true);                            //Set nổi màu progressbar
-        if (player.isPlaying()) {
-            playingHolder.progress_bar.setVisibility(View.VISIBLE);
-            playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_pause);
-        } else {
-            playingHolder.btn_play_pause.setBackgroundResource(R.drawable.ic_play);
+        } catch (Exception e){
+
         }
     }
 
@@ -206,19 +214,25 @@ public class RingtoneAdapter extends RecyclerView.Adapter<RingtoneAdapter.ViewHo
     }
 
     private void startMediaPlayerOnline(String file_url) {
-        Uri uri = Uri.parse(file_url);
-        player = MediaPlayer.create(activity, uri);
-        player.start();
-        //Nếu chơi xong thì release và update ui
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                releaseMediaPlayer();
-            }
-        });
+        checkConnection = new CheckConnection();
+        if (checkConnection.CheckConnection(activity) == true){
+            Uri uri = Uri.parse(file_url);
+            player = MediaPlayer.create(activity, uri);
+            player.start();
+            //Nếu chơi xong thì release và update ui
+            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    releaseMediaPlayer();
+                }
+            });
+        } else {
+            noConnectionDialog(activity);
+        }
     }
 
     private void startMediaPlayer(String file_name, String file_url) {
+        checkConnection = new CheckConnection();
         File path = new File(Environment.getExternalStorageDirectory() + "/ringtone_app");
         String fileName = file_name+".mp3";
         File ringtone = new File(path, fileName);
@@ -234,18 +248,42 @@ public class RingtoneAdapter extends RecyclerView.Adapter<RingtoneAdapter.ViewHo
                 }
             });
         } else {
-            Uri uri = Uri.parse(file_url);
-            player = MediaPlayer.create(activity, uri);
-            player.start();
-            //Nếu chơi xong thì release và update ui
-            player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    releaseMediaPlayer();
-                }
-            });
+            if (checkConnection.CheckConnection(activity) == true){
+                Uri uri = Uri.parse(file_url);
+                player = MediaPlayer.create(activity, uri);
+                player.start();
+                //Nếu chơi xong thì release và update ui
+                player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaPlayer();
+                    }
+                });
+            } else {
+                noConnectionDialog(activity);
+            }
         }
+    }
 
+    private void noConnectionDialog(final Activity activity){
+        dialog_no_connection = new Dialog(activity);
+        dialog_no_connection.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog_no_connection.getWindow();
+        window.setBackgroundDrawableResource(android.R.color.transparent);
+        dialog_no_connection.setContentView(R.layout.noconnection_dialog);
+        dialog_no_connection.setCancelable(false);
+        Button btn_ok = dialog_no_connection.findViewById(R.id.btn_ok);
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog_no_connection.dismiss();
+                if (checkConnection.CheckConnection(activity) == false){
+                    noConnectionDialog(activity);
+                }
+                updateNoPlayingView(playingHolder);
+            }
+        });
+        dialog_no_connection.show();
     }
 
     private void releaseMediaPlayer() {

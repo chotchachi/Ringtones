@@ -9,4 +9,5 @@
     <color name="white">#FFF</color>
     <color name="ghostwhite">#F8F8FF</color>
     <color name="black">#000</color>
+    <color name="blue500">#2196F3</color>
 </resources>
